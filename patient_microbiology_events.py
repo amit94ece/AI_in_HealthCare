@@ -11,9 +11,6 @@ patients = pd.read_csv('./data/PATIENTS.csv', dtype={'dob': str})
 admissions = pd.read_csv('./data/ADMISSIONS.csv', dtype={'admittime': str})
 microevents = pd.read_csv('./data/MICROBIOLOGYEVENTS.csv')
 
-# Print column names to verify
-print("Microbiology Events columns:", microevents.columns.tolist())
-
 def convert_date_format(date_str):
     try:
         date_obj = pd.to_datetime(date_str)
