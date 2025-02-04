@@ -68,6 +68,19 @@ This repository contains three Python scripts that create interactive dashboards
 
 4. Open a web browser and navigate to `http://127.0.0.1:8050/` to view the dashboard.
 
+
+5. Before running a new dashboard script, ensure the previous script is killed to free up port 8050:
+
+Check if any application is running on port 8050:
+```
+lsof -i :8050
+```
+
+Kill the process if found:
+```
+kill -9 <PID>
+```
+
 ## Customization
 
 Each dashboard includes filters that allow users to interact with the data:
