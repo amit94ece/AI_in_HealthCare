@@ -8,6 +8,24 @@ This repository contains three Python scripts that create interactive dashboards
 2. `patient_drugs_icu_stays.py`
 3. `patient_admission_analysis.py`
 
+## Project Structure
+```
+AI_in_Healthcare/
+│
+├── data/                          # Data directory
+│   ├── PATIENTS.csv
+│   ├── ADMISSIONS.csv
+│   ├── MICROBIOLOGYEVENTS.csv
+│   ├── PRESCRIPTIONS.csv
+│   └── ICUSTAYS.csv
+│                 
+├── patient_microbiology_events.py
+├── patient_drugs_icu_stays.py
+├── patient_admission_analysis    
+├── README.md
+└── .gitignore
+```
+
 ## Features
 
 ### Patient Microbiology Events Analysis
