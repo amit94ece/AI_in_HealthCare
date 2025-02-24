@@ -8,12 +8,9 @@ from sklearn.manifold import TSNE
 from gensim.models import Word2Vec
 from tqdm import tqdm
 from collections import Counter
-from spacy import displacy
-from IPython.display import HTML, display
 from tqdm.auto import tqdm
 import networkx as nx
 import seaborn as sns
-import string
 from nltk.corpus import stopwords
 import nltk
 import re
@@ -117,12 +114,11 @@ def extract_and_display_entities(text, model, title):
 
     return [(ent.text, ent.label_) for ent in doc.ents]
 
-
 # Process sample text with both models
 print("\nExtracting entities...")
 sample_text = diabetes_sample_notes['TEXT'].iloc[0]
-sci_entities = extract_and_display_entities(sample_text, nlp_sci, "Scientific Model")
-web_entities = extract_and_display_entities(sample_text, nlp_web, "Web Model")
+sci_entities = extract_and_display_entities(sample_text[:5000], nlp_sci, "Scientific Model")
+web_entities = extract_and_display_entities(sample_text[:5000], nlp_web, "Web Model")
 
 # Optional: Add entity network visualization
 def visualize_entity_network(entities, title):
@@ -403,7 +399,7 @@ def visualize_similar_words(w2v_model, condition_name):
 print("\nProcessing Diabetes notes using Scientific Model...")
 create_word2vec_and_tsne(diabetes_sample_notes, nlp_sci, "Diabetes")
 
-# print("\nProcessing Diabetes notes using Web Model...")
-# create_word2vec_and_tsne(diabetes_sample_notes, nlp_web, "Diabetes")
+print("\nProcessing Diabetes notes using Web Model...")
+create_word2vec_and_tsne(diabetes_sample_notes, nlp_web, "Diabetes")
 
 print("\nAnalysis complete!")

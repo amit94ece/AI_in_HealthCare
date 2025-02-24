@@ -295,6 +295,9 @@ def create_word2vec_and_tsne(notes_df, nlp_model, condition_name):
         except KeyError:
             print(f"'{condition_name}' not found in vocabulary")
         
+        # Visualization of similar words
+        visualize_similar_words(w2v_model, condition_name)
+
         # TSNE Visualization
         print("\nCreating t-SNE visualization...")
         tokens = []
@@ -369,13 +372,6 @@ if __name__ == "__main__":
     diabetes_patients = diagnoses_df[diagnoses_df['ICD9_CODE'].str.startswith('250', na=False)]
     diabetes_notes = pd.merge(diabetes_patients, notes_df, on=['SUBJECT_ID', 'HADM_ID'])
     diabetes_sample_notes = diabetes_notes[diabetes_notes['CATEGORY'] == 'Discharge summary'].sample(n=500, random_state=42)
-
-    # Add target rules (as in your original code)
-    target_matcher = nlp.get_pipe("medspacy_target_matcher")
-    target_rules = [
-        # Your existing rules here
-    ]
-    target_matcher.add(target_rules)
 
     sample_text = diabetes_sample_notes['TEXT'].iloc[0]
     medspacy_entities = extract_and_display_entities(sample_text, nlp, "MedSpaCy Model")
