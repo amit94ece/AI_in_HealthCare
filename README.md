@@ -1,4 +1,35 @@
-# Patient Data Analysis Dashboard
+# AI in Healthcare: Patient Data Analysis and NLP
+This repository contains Python scripts for analyzing patient data and performing Natural Language Processing (NLP) on medical notes using various techniques and libraries.
+
+## Project Structure
+```
+AI_in_Healthcare/
+│
+├── MIMIC_VISUALIZATION/
+│   ├── data/                          # Data directory
+│   │   ├── PATIENTS.csv
+│   │   ├── ADMISSIONS.csv
+│   │   ├── MICROBIOLOGYEVENTS.csv
+│   │   ├── PRESCRIPTIONS.csv
+│   │   └── ICUSTAYS.csv
+│   │                 
+│   ├── patient_microbiology_events.py
+│   ├── patient_drugs_icu_stays.py
+│   └── patient_admission_analysis.py
+│
+├── MIMIC_NLP/
+│   ├── data/
+│   │   ├── NOTEEVENTS.csv.gz
+│   │   └── DIAGNOSES_ICD.csv.gz
+│   │
+│   ├── nlp_spacymodels.py
+│   └── nlp_medspacy.py
+│
+├── README.md
+└── .gitignore
+```
+
+## Patient Data Analysis Dashboard
 
 This repository contains three Python scripts that create interactive dashboards for analyzing patient data using Dash and Plotly. Each script focuses on different aspects of patient information and medical events.
 
@@ -7,24 +38,6 @@ This repository contains three Python scripts that create interactive dashboards
 1. `patient_microbiology_events.py`
 2. `patient_drugs_icu_stays.py`
 3. `patient_admission_analysis.py`
-
-## Project Structure
-```
-AI_in_Healthcare/
-│
-├── data/                          # Data directory
-│   ├── PATIENTS.csv
-│   ├── ADMISSIONS.csv
-│   ├── MICROBIOLOGYEVENTS.csv
-│   ├── PRESCRIPTIONS.csv
-│   └── ICUSTAYS.csv
-│                 
-├── patient_microbiology_events.py
-├── patient_drugs_icu_stays.py
-├── patient_admission_analysis    
-├── README.md
-└── .gitignore
-```
 
 ## Features
 
