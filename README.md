@@ -89,10 +89,19 @@ This folder contains Python scripts for performing Natural Language Processing (
 - plotly
 - dash
 - numpy
+- spacy
+- scispacy
+- gensim
+- sklearn
+- networkx
+- seaborn
+- nltk
+- medspacy
 
 ## Usage
 
-1. Ensure you have the required datasets in a `./data/` directory:
+### For MIMIC_VISUALIZATION:
+1. Ensure you have the required datasets in a `MIMIC_VISUALIZATION/data/` directory:
    - PATIENTS.csv
    - ADMISSIONS.csv
    - MICROBIOLOGYEVENTS.csv
@@ -125,6 +134,18 @@ Kill the process if found:
 ```
 kill -9 <PID>
 ```
+### For MIMIC_NLP:
+1. Ensure you have the required datasets in the `MIMIC_NLP/data/` directory:
+   - NOTEEVENTS.csv.gz
+   - DIAGNOSES_ICD.csv.gz
+
+2. Install the required packages:
+```pip install pandas numpy spacy scispacy gensim sklearn networkx seaborn nltk medspacy```
+
+3. Run each script individually:
+```python nlp_spacymodels.py```
+```python nlp_medspacy.py```
+
 
 ## Customization
 
@@ -135,9 +156,6 @@ Each dashboard includes filters that allow users to interact with the data:
 - Organism / Drug Type / Insurance
 
 Adjust these filters to explore different aspects of the patient data.
-
-
-
 
 
 ## Contributing
