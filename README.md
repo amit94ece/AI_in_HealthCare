@@ -152,7 +152,7 @@ kill -9 <PID>
 
 
 ## Customization
-
+### For MIMIC_VISUALIZATION:
 Each dashboard includes filters that allow users to interact with the data:
 
 - Age Range
