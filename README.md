@@ -29,19 +29,19 @@ AI_in_Healthcare/
 └── .gitignore
 ```
 
-## Patient Data Analysis Dashboard
+## MIMIC_VISUALIZATION
 
-This repository contains three Python scripts that create interactive dashboards for analyzing patient data using Dash and Plotly. Each script focuses on different aspects of patient information and medical events.
+This folder MIMIC_VISUALIZATION contains three Python scripts that create interactive dashboards for analyzing patient data using Dash and Plotly. Each script focuses on different aspects of patient information and medical events.
 
-## Files
+### Files
 
 1. `patient_microbiology_events.py`
 2. `patient_drugs_icu_stays.py`
 3. `patient_admission_analysis.py`
 
-## Features
+### Features
 
-### Patient Microbiology Events Analysis
+#### Patient Microbiology Events Analysis
 
 - Weekly distribution of microbiology specimens
 - Organism vs Specimen Type heatmap
@@ -50,7 +50,7 @@ This repository contains three Python scripts that create interactive dashboards
 - Age Distribution by Specimen Type (Violin Plot)
 - Distribution of Test Timing by Organism (Box Plot)
 
-### Patient Drugs & ICU Stays Analysis
+#### Patient Drugs & ICU Stays Analysis
 
 - Top 10 Most Prescribed Medications
 - ICU Length of Stay Distribution
@@ -59,7 +59,7 @@ This repository contains three Python scripts that create interactive dashboards
 - Age vs Number of Medications
 - Distribution of ICU Types
 
-### Patient Admission Analysis
+#### Patient Admission Analysis
 
 - Gender Distribution
 - Age Distribution at Admission
@@ -67,6 +67,20 @@ This repository contains three Python scripts that create interactive dashboards
 - Length of Stay vs Age
 - Top 10 Diagnoses Distribution
 - Age Distribution: Admission vs Death (Butterfly Chart)
+
+## MIMIC_NLP
+This folder contains Python scripts for performing Natural Language Processing (NLP) on medical notes, focusing on diabetes-related text.
+
+### Files
+1. `nlp_spacymodels.py`
+2. `nlp_medspacy.py`
+
+### Features
+- Entity extraction using SpaCy models (en_core_sci_lg and en_core_web_sm)
+- Entity extraction using MedSpaCy
+- Word embeddings generation using Word2Vec
+- Visualization of entity relationships and word similarities
+- t-SNE visualization of word embeddings
 
 ## Requirements
 
@@ -121,6 +135,10 @@ Each dashboard includes filters that allow users to interact with the data:
 - Organism / Drug Type / Insurance
 
 Adjust these filters to explore different aspects of the patient data.
+
+
+
+
 
 ## Contributing
 
