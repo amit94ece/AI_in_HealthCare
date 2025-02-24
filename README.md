@@ -140,11 +140,15 @@ kill -9 <PID>
    - DIAGNOSES_ICD.csv.gz
 
 2. Install the required packages:
-```pip install pandas numpy spacy scispacy gensim sklearn networkx seaborn nltk medspacy```
+   ```
+   pip install pandas numpy spacy scispacy gensim sklearn networkx seaborn nltk medspacy
+   ```
 
 3. Run each script individually:
-```python nlp_spacymodels.py```
-```python nlp_medspacy.py```
+   ```
+   python nlp_spacymodels.py
+   python nlp_medspacy.py
+   ```
 
 
 ## Customization
