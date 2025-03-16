@@ -50,8 +50,8 @@ AI_in_HealthCare/
 └── README.md
 ```
 
-#Features
-## 1. Exploratory Data Analysis (EDA)
+# Features
+### 1. Exploratory Data Analysis (EDA)
 Distribution Analysis
 
 Length of Stay distribution
@@ -84,7 +84,7 @@ Seasonal trends
 
 Day-of-week effects
 
-## 2. Feature Engineering
+### 2. Feature Engineering
 Log transformation of billing amount
 
 Age-related features
@@ -95,7 +95,7 @@ Interaction features
 
 Medical condition encoding
 
-## 3. Model Implementation
+### 3. Model Implementation
 Random Forest Regressor
 
 Gradient Boosting Regressor
@@ -104,7 +104,7 @@ XGBoost Regressor
 
 Model pipeline with preprocessing
 
-## 4. Model Evaluation
+### 4. Model Evaluation
 R-squared (R²) score
 
 Root Mean Square Error (RMSE)
@@ -115,14 +115,14 @@ Cross-validation scores
 
 Prediction intervals
 
-## Usage
-### Running the Analysis
-# Ensure you're in the project directory and virtual environment is activated
+# Usage
+## Running the Analysis
+### Ensure you're in the project directory and virtual environment is activated
 ```cd Self_Learning_Tutorial/scripts
 python3 expda.py
 ```
 
-# Key Visualizations
+## Key Visualizations
 The script generates multiple visualizations:
 
 Distribution Plots
@@ -181,7 +181,7 @@ MAE: X.XX
 R2: X.XX
 
 
-# Dependencies
+## Dependencies
 pandas
 numpy
 matplotlib
@@ -190,11 +190,11 @@ scikit-learn
 xgboost
 
 
-# If you encounter version conflicts, try
+### If you encounter version conflicts, try
 pip install -r requirements.txt --no-cache-dir
 
 
-# Memory Issues
+## Memory Issues
 
 Reduce sample size for analysis
 
