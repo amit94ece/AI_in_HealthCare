@@ -53,7 +53,7 @@ AI_in_HealthCare/
 │   │   └── healthcare_dataset.csv
 │   │
 │   ├── scripts/
-│       └── expda.py
+│       └── slt.py
 ├── requirements.txt
 └── README.md
 ```
@@ -127,7 +127,7 @@ Prediction intervals
 ## Running the Analysis
 ### Ensure you're in the project directory and virtual environment is activated
 ```cd Self_Learning_Tutorial/scripts
-python3 expda.py
+python3 slt.py
 ```
 
 ## Key Visualizations
