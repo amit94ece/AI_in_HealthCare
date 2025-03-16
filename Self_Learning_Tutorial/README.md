@@ -15,24 +15,32 @@ This script performs comprehensive exploratory data analysis (EDA) and implement
 git clone <repository-url>
 cd AI_in_HealthCare
 ```
-### 2. Create and Activate Virtual Environment
+
+### 2. Download the dataset
+Download the dataset from the link below - 
+https://www.kaggle.com/datasets/prasad22/healthcare-dataset?resource=download
+
+Create a ```data``` folder into the cloned repo as shown in project structure.
+Unzip and copy it to the folder ```data```.
+
+### 3. Create and Activate Virtual Environment
 For macOS/Linux:
 
-# Create virtual environment
+### Create virtual environment
 ```python3 -m venv sltvenv```
 
-# Activate virtual environment
+### Activate virtual environment
 ```source sltvenv/bin/activate```
 
 For Windows:
-# Create virtual environment
+### Create virtual environment
 ```python -m venv sltvenv```
 
-# Activate virtual environment
+### Activate virtual environment
 ```.\sltvenv\Scripts\activate```
 
 
-### 3. Install Dependencies
+### 4. Install Dependencies
 ```pip install -r requirements.txt```
 
 
