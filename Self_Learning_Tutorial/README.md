@@ -37,6 +37,7 @@ For Windows:
 
 
 # Project Structure
+```
 AI_in_HealthCare/
 │
 ├── Self_Learning_Tutorial/
@@ -47,7 +48,7 @@ AI_in_HealthCare/
 │       └── expda.py
 ├── requirements.txt
 └── README.md
-
+```
 
 #Features
 ## 1. Exploratory Data Analysis (EDA)
