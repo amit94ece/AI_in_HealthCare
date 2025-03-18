@@ -33,45 +33,8 @@ print(df['Length of Stay'].describe())
 
 
 # Set up the visualization style
-# plt.style.use('seaborn-whitegrid')
 plt.style.use('seaborn-v0_8-whitegrid')
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
-
-# # Distribution of Length of Stay
-# sns.histplot(df['Length of Stay'], kde=True, ax=axes[0, 0])
-# axes[0, 0].set_title('Distribution of Length of Stay')
-# axes[0, 0].set_xlabel('Days')
-
-# # Length of Stay by Medical Condition
-# sns.boxplot(x='Medical Condition', y='Length of Stay', data=df, ax=axes[0, 1])
-# axes[0, 1].set_title('Length of Stay by Medical Condition')
-# axes[0, 1].set_xticklabels(axes[0, 1].get_xticklabels(), rotation=45)
-
-# # Length of Stay by Age Groups
-# df['Age Group'] = pd.cut(df['Age'], bins=[0, 18, 35, 50, 65, 100], 
-#                          labels=['<18', '18-35', '36-50', '51-65', '>65'])
-# sns.boxplot(x='Age Group', y='Length of Stay', data=df, ax=axes[1, 0])
-# axes[1, 0].set_title('Length of Stay by Age Group')
-
-# # Length of Stay by Admission Type
-# sns.boxplot(x='Admission Type', y='Length of Stay', data=df, ax=axes[1, 1])
-# axes[1, 1].set_title('Length of Stay by Admission Type')
-
-# plt.tight_layout()
-# plt.show()
-
-# # Correlation between Age and Length of Stay
-# plt.figure(figsize=(10, 6))
-# sns.scatterplot(x='Age', y='Length of Stay', hue='Medical Condition', data=df)
-# plt.title('Age vs Length of Stay by Medical Condition')
-# plt.show()
-
-# # Length of Stay by Gender and Medical Condition
-# plt.figure(figsize=(12, 6))
-# sns.boxplot(x='Medical Condition', y='Length of Stay', hue='Gender', data=df)
-# plt.title('Length of Stay by Gender and Medical Condition')
-# plt.xticks(rotation=45)
-# plt.show()
 
 # Distribution of Length of Stay
 sns.histplot(df['Length of Stay'], kde=True, ax=axes[0, 0])
@@ -404,9 +367,13 @@ def plot_actual_vs_predicted(y_test, y_pred, model_name):
     # Add R2 score to plot
     r2 = r2_score(y_test, y_pred)
     plt.text(0.05, 0.95, f'R² = {r2:.3f}', 
-             transform=plt.gca().transAxes,
-             bbox=dict(facecolor='white', alpha=0.8))
-    
+    transform=plt.gca().transAxes,
+    bbox=dict(facecolor='white', alpha=0.8),
+    verticalalignment='top',
+    horizontalalignment='left')
+
+    # Move legend outside the plot on the right
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper right')
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     plt.show()
@@ -545,7 +512,7 @@ if best_model_name == 'Random Forest':
         plt.xlabel('Sample Index (Sorted by Actual Values)')
         plt.ylabel('Length of Stay')
         plt.title('Random Forest Predictions with 95% Prediction Intervals')
-        plt.legend()
+        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
         plt.grid(True, alpha=0.3)
         
         # Add R2 score to plot
