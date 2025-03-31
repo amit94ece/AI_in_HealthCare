@@ -175,112 +175,6 @@ def calculate_age(admit_date, birth_date):
     except:
         return np.nan
 
-# def process_chf_data(data):
-#     """
-#     Process the CHF data to create features for modeling.
-#     """
-#     logging.info("Processing CHF data...")
-#     logging.info("Available columns: %s", data.columns.tolist())
-    
-#     # Create a copy of the data to avoid modifying the original
-#     processed_data = data.copy()
-    
-#     # Convert dates
-#     processed_data['DOB'] = processed_data['DOB'].apply(convert_date_format)
-#     processed_data['ADMITTIME'] = processed_data['ADMITTIME'].apply(convert_date_format)
-#     processed_data['DISCHTIME'] = pd.to_datetime(processed_data['DISCHTIME'])
-    
-#     # Calculate age at admission
-#     processed_data['AGE'] = processed_data.apply(
-#         lambda row: calculate_age(row['ADMITTIME'], row['DOB']), axis=1
-#     )
-    
-#     # Filter for valid ages between 1 and 120
-#     processed_data = processed_data[
-#         (processed_data['AGE'] >= 1) & 
-#         (processed_data['AGE'] <= 120)
-#     ].copy()
-    
-#     # Calculate length of stay if not already present
-#     if 'LOS' not in processed_data.columns:
-#         processed_data['LOS'] = (
-#             processed_data['DISCHTIME'] - processed_data['ADMITTIME']
-#         ).dt.total_seconds() / (24 * 60 * 60)
-    
-#     # Select features for the final dataset
-#     features = [
-#         'SUBJECT_ID', 'HADM_ID', 'AGE', 'LOS', 
-#         'HOSPITAL_EXPIRE_FLAG',  # target variable
-#         'GENDER',  # additional demographic feature
-#         'bnp', 'creatinine', 'sodium', 'potassium'
-#     ]
-    
-#     # Select only the columns that exist in the data
-#     features = [f for f in features if f in processed_data.columns]
-#     logging.info("Selected features: %s", features)
-    
-#     final_data = processed_data[features].copy()
-    
-#     # Handle missing values in lab results
-#     for col in ['bnp', 'creatinine', 'sodium', 'potassium']:
-#         if col in final_data.columns:
-#             mean_value = final_data[col].mean()
-#             final_data[col] = final_data[col].fillna(mean_value)
-#             logging.info(f"Filled {final_data[col].isna().sum()} missing values in {col}")
-    
-#     logging.info(f"Final processed data shape: {final_data.shape}")
-    
-#     # Print summary statistics
-#     logging.info("\nSummary statistics:")
-#     logging.info(final_data.describe())
-    
-#     # Print additional information
-#     if 'GENDER' in final_data.columns:
-#         logging.info("\nGender distribution:")
-#         logging.info(final_data['GENDER'].value_counts(normalize=True))
-    
-#     logging.info("\nMortality rate:")
-#     logging.info(f"{final_data['HOSPITAL_EXPIRE_FLAG'].mean():.2%}")
-    
-#     return final_data
-
-# if __name__ == "__main__":
-#     # Set up logging
-#     logging.basicConfig(
-#         level=logging.INFO,
-#         format='%(asctime)s - %(levelname)s - %(message)s'
-#     )
-    
-#     # Set the path to your data folder
-#     mimic_dir = "data"
-    
-#     try:
-#         logging.info("Starting data processing...")
-        
-#         # Get raw CHF data
-#         chf_data = get_chf_data(mimic_dir)
-#         logging.info("Successfully loaded CHF data")
-        
-#         # Process the data
-#         processed_data = process_chf_data(chf_data)
-#         logging.info(f"Processed data shape: {processed_data.shape}")
-        
-#         # Save processed data
-#         output_file = "processed_chf_data.csv"
-#         processed_data.to_csv(output_file, index=False)
-#         logging.info(f"Saved processed data to {output_file}")
-        
-#         # Print final statistics
-#         logging.info("\nFinal dataset statistics:")
-#         logging.info(f"Total patients: {processed_data['SUBJECT_ID'].nunique()}")
-#         logging.info(f"Total admissions: {processed_data['HADM_ID'].nunique()}")
-#         logging.info(f"Features included: {processed_data.columns.tolist()}")
-        
-#     except Exception as e:
-#         logging.error("Error occurred: %s", str(e))
-#         logging.error("Stack trace:", exc_info=True)
-#         raise
-
 def process_chf_data(data):
     """
     Process the CHF data to create features for modeling.
@@ -328,23 +222,6 @@ def process_chf_data(data):
     # Map race categories
     processed_data['RACE'] = processed_data['ETHNICITY'].apply(
         lambda x: next((v for k, v in race_mapping.items() if k in str(x).upper()), 'OTHER')
-    )
-    
-    # Define care unit mapping
-    unit_mapping = {
-        'Medical Intensive Care Unit (MICU)': 'MICU',
-        'Surgical Intensive Care Unit (SICU)': 'SICU',
-        'Cardiac Vascular Intensive Care Unit (CVICU)': 'CVICU',
-        'Coronary Care Unit (CCU)': 'CCU',
-        'Trauma SICU (TSICU)': 'TSICU',
-        'Neuro Surgical Intensive Care Unit (Neuro SICU)': 'NSICU',
-        'Neuro Intermediate': 'NINT',
-        'Neuro Stepdown': 'NSD'
-    }
-    
-    # Map care unit categories
-    processed_data['FIRST_CAREUNIT'] = processed_data['FIRST_CAREUNIT'].apply(
-        lambda x: next((v for k, v in unit_mapping.items() if k in str(x)), x)
     )
     
     # Select relevant features
