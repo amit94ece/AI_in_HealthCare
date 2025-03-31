@@ -25,6 +25,22 @@ The `data_preprocessing.py` script handles the following tasks:
 - Lab values normalization
 - Comprehensive error handling and logging
 
+### Traditional ML Models
+- Random Forest Classifier
+  - Hyperparameter tuning via GridSearchCV
+  - Feature importance analysis
+  - Handles class imbalance through class weights
+
+- XGBoost
+  - Gradient boosting implementation
+  - Early stopping to prevent overfitting
+  - Built-in feature importance metrics
+
+- Logistic Regression
+  - Baseline model for comparison
+  - L2 regularization
+  - Scaled features using StandardScaler
+
 ## Neural Network Model
 
 The implementation includes a custom neural network with:
