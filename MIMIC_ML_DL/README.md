@@ -7,7 +7,7 @@ This project implements machine learning and deep learning models for analyzing 
 ## Data Preprocessing
 
 The `data_preprocessing.py` script handles the following tasks:
-- Reads and processes MIMIC-IV CSV files
+- Reads and processes MIMIC-III CSV compressed files
 - Filters data for CHF patients using ICD-9 codes
 - Merges relevant tables (diagnoses, admissions, patients, ICU stays)
 - Processes lab events data for key indicators:
@@ -60,11 +60,11 @@ AI_in_HealthCare/
 
 ## Usage
 
-1. Ensure MIMIC-IV data is in the correct directory structure
+Ensure MIMIC-IV data is in the correct directory structure
 
 ## Environment Setup
 
-2. Create and Activate Virtual Environment
+Create and Activate Virtual Environment
 For macOS/Linux:
 
 ### Create virtual environment
