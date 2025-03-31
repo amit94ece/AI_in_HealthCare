@@ -172,3 +172,17 @@ cython_debug/
 
 #Any Data Files
 /*/data/*
+*/*.csv
+*/*.json
+*/*.xlsx
+*/*.xls
+*/*.hdf5
+*/*.h5
+*/*.parquet
+*/*.feather
+*/*.dta
+*/*.sav
+*/*.rds
+*/*.sas7bdat
+*/*.xpt
+*/*.pth
