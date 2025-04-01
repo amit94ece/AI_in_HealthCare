@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project implements machine learning and deep learning models for analyzing MIMIC-II healthcare data, with a specific focus on Congestive Heart Failure (CHF) prediction. The implementation includes data preprocessing, feature engineering, and neural network modeling using PyTorch.
+This project implements machine learning and deep learning models for analyzing MIMIC-IV healthcare data, with a specific focus on Congestive Heart Failure (CHF) prediction. The implementation includes data preprocessing, feature engineering, and neural network modeling using PyTorch.
 
 ## Data Preprocessing
 
