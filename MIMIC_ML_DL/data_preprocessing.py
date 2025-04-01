@@ -52,7 +52,7 @@ def get_chf_data(mimic_dir):
     diagnoses = read_mimic_csv(mimic_dir, 'diagnoses_icd.csv')
     logging.info("Diagnoses columns: %s", diagnoses.columns.tolist())
     
-    # Filter for CHF diagnoses (ICD-10: 4280)
+    # Filter for CHF diagnoses (ICD-9: 4280)
     chf_icd9 = d_icd[d_icd['icd_code'] == '4280']
     logging.info(f"Found {len(chf_icd9)} CHF diagnosis codes")
     
@@ -165,17 +165,6 @@ def convert_date_format(date_str):
         return date_obj
     except:
         return pd.NaT
-
-def calculate_age(admit_date, birth_date):
-    try:
-        if pd.isna(admit_date) or pd.isna(birth_date):
-            return np.nan
-        years = admit_date.year - birth_date.year
-        if (admit_date.month, admit_date.day) < (birth_date.month, birth_date.day):
-            years -= 1
-        return years
-    except:
-        return np.nan
 
 def process_chf_data(data):
     """
