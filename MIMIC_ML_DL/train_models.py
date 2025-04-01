@@ -36,13 +36,13 @@ class RandomBinaryClassifier:
         probs[:, 1] = self.prob_positive
         return probs
 
-def prepare_data_splits(features, target_col='HOSPITAL_EXPIRE_FLAG', 
+def prepare_data_splits(features, target_col='hospital_expire_flag', 
                        test_size=0.15, val_size=0.15):
     """
     Rebalance and split data into train, validation, and test sets.
     """
     # Extract features and target
-    id_cols = [col for col in ['SUBJECT_ID', 'HADM_ID', 'ICUSTAY_ID'] 
+    id_cols = [col for col in ['subject_id', 'hadm_id', 'icustay_id'] 
               if col in features.columns]
     X = features.drop(columns=id_cols + [target_col])
     y = features[target_col]

@@ -186,3 +186,4 @@ cython_debug/
 */*.sas7bdat
 */*.xpt
 */*.pth
+*/additional_data/*

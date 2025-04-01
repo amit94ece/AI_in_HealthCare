@@ -1,4 +1,4 @@
-# AI in Healthcare: MIMIC-III Data Analysis
+# AI in Healthcare: MIMIC-IV Data Analysis
 
 ## Project Overview
 
@@ -7,7 +7,7 @@ This project implements machine learning and deep learning models for analyzing 
 ## Data Preprocessing
 
 The `data_preprocessing.py` script handles the following tasks:
-- Reads and processes MIMIC-III CSV compressed files
+- Reads and processes MIMIC-IV CSV compressed files
 - Filters data for CHF patients using ICD-9 codes
 - Merges relevant tables (diagnoses, admissions, patients, ICU stays)
 - Processes lab events data for key indicators:
@@ -76,7 +76,7 @@ AI_in_HealthCare/
 ```
 
 ## Usage
-Ensure MIMIC-III data is in the correct directory structure
+Ensure MIMIC-IV data is in the correct directory structure
 
 ## Environment Setup
 
@@ -137,7 +137,7 @@ Accuracy
 
 ## Note
 
-Access to MIMIC-III data requires appropriate credentialing through PhysioNet.
+Access to MIMIC-IV data requires appropriate credentialing through PhysioNet.
 
 ## Contributing
 
@@ -149,5 +149,5 @@ This project is open-source and available under the MIT License.
 
 ## Acknowledgments
 
-MIMIC-III database
+MIMIC-IV database
 PhysioNet for providing access to healthcare data

@@ -52,12 +52,12 @@ def get_chf_data(mimic_dir):
     diagnoses = read_mimic_csv(mimic_dir, 'diagnoses_icd.csv')
     logging.info("Diagnoses columns: %s", diagnoses.columns.tolist())
     
-    # Filter for CHF diagnoses (ICD-9: 4280)
-    chf_icd9 = d_icd[d_icd['ICD9_CODE'] == '4280']
+    # Filter for CHF diagnoses (ICD-10: 4280)
+    chf_icd9 = d_icd[d_icd['icd_code'] == '4280']
     logging.info(f"Found {len(chf_icd9)} CHF diagnosis codes")
     
     # Get all diagnoses with CHF
-    chf_diagnoses = diagnoses[diagnoses['ICD9_CODE'].isin(chf_icd9['ICD9_CODE'])]
+    chf_diagnoses = diagnoses[diagnoses['icd_code'].isin(chf_icd9['icd_code'])]
     logging.info(f"Found {len(chf_diagnoses)} CHF diagnoses")
     
     # Read admissions data
@@ -66,7 +66,7 @@ def get_chf_data(mimic_dir):
     logging.info(f"Read {len(admissions)} admission records")
     
     # Merge diagnoses with admissions
-    chf_admissions = pd.merge(chf_diagnoses, admissions, on=['HADM_ID', 'SUBJECT_ID'])
+    chf_admissions = pd.merge(chf_diagnoses, admissions, on=['hadm_id', 'subject_id'])
     
     # Clean up duplicate columns
     columns_to_drop = [col for col in chf_admissions.columns if '_x' in col or '_y' in col]
@@ -80,7 +80,7 @@ def get_chf_data(mimic_dir):
     logging.info("Patients columns: %s", patients.columns.tolist())
     
     # Merge with patients data
-    chf_patients = pd.merge(chf_admissions, patients, on='SUBJECT_ID')
+    chf_patients = pd.merge(chf_admissions, patients, on='subject_id')
     
     # Clean up duplicate columns again
     columns_to_drop = [col for col in chf_patients.columns if '_x' in col or '_y' in col]
@@ -90,7 +90,7 @@ def get_chf_data(mimic_dir):
     icustays = read_mimic_csv(mimic_dir, 'icustays.csv')
     
     # Merge with ICU stays
-    chf_icu = pd.merge(chf_patients, icustays, on=['SUBJECT_ID', 'HADM_ID'])
+    chf_icu = pd.merge(chf_patients, icustays, on=['subject_id', 'hadm_id'])
     
     # Clean up duplicate columns one more time
     columns_to_drop = [col for col in chf_icu.columns if '_x' in col or '_y' in col]
@@ -103,7 +103,7 @@ def get_chf_data(mimic_dir):
     lab_events_chunks = pd.read_csv(lab_events_path, 
                                   compression='gzip',
                                   chunksize=1000000)
-    
+
     # Filter for relevant lab tests for CHF
     bnp_itemid = 51003      # Brain Natriuretic Peptide (BNP)
     creatinine_itemid = 50912  # Creatinine
@@ -119,8 +119,8 @@ def get_chf_data(mimic_dir):
         
         # Filter for relevant lab tests and hadm_ids in chf_icu
         chunk_filtered = chunk[
-            (chunk['ITEMID'].isin([bnp_itemid, creatinine_itemid, sodium_itemid, potassium_itemid])) & 
-            (chunk['HADM_ID'].isin(chf_icu['HADM_ID']))
+            (chunk['itemid'].isin([bnp_itemid, creatinine_itemid, sodium_itemid, potassium_itemid])) & 
+            (chunk['hadm_id'].isin(chf_icu['hadm_id']))
         ]
         if not chunk_filtered.empty:
             lab_events_filtered.append(chunk_filtered)
@@ -130,12 +130,14 @@ def get_chf_data(mimic_dir):
     if lab_events_filtered:
         lab_events = pd.concat(lab_events_filtered)
         logging.info(f"Total lab events after filtering: {len(lab_events)}")
+        # Convert hadm_id to integer in lab_events
+        lab_events['hadm_id'] = lab_events['hadm_id'].astype('Int64')
         
         # Pivot lab events to get one row per admission with lab values as columns
         lab_pivot = lab_events.pivot_table(
-            index='HADM_ID', 
-            columns='ITEMID', 
-            values='VALUENUM', 
+            index='hadm_id', 
+            columns='itemid', 
+            values='valuenum', 
             aggfunc='mean'
         )
         
@@ -149,7 +151,7 @@ def get_chf_data(mimic_dir):
         ]
         
         # Merge lab values with CHF data
-        chf_data = pd.merge(chf_icu, lab_pivot, on='HADM_ID', how='left')
+        chf_data = pd.merge(chf_icu, lab_pivot, on='hadm_id', how='left')
         logging.info(f"Final dataset shape after merging lab values: {chf_data.shape}")
     else:
         chf_data = chf_icu
@@ -186,25 +188,20 @@ def process_chf_data(data):
     processed_data = data.copy()
     
     # Convert dates
-    processed_data['DOB'] = processed_data['DOB'].apply(convert_date_format)
-    processed_data['ADMITTIME'] = processed_data['ADMITTIME'].apply(convert_date_format)
-    processed_data['DISCHTIME'] = pd.to_datetime(processed_data['DISCHTIME'])
+    processed_data['admittime'] = processed_data['admittime'].apply(convert_date_format)
+    processed_data['dischtime'] = pd.to_datetime(processed_data['dischtime'])
     
-    # Calculate age at admission
-    processed_data['AGE'] = processed_data.apply(
-        lambda row: calculate_age(row['ADMITTIME'], row['DOB']), axis=1
-    )
-    
+    processed_data['age'] = processed_data['anchor_age']
     # Filter for valid ages between 1 and 120
     processed_data = processed_data[
-        (processed_data['AGE'] >= 1) & 
-        (processed_data['AGE'] <= 120)
+        (processed_data['age'] >= 1) & 
+        (processed_data['age'] <= 120)
     ].copy()
     
     # Calculate length of stay if not already present
-    if 'LOS' not in processed_data.columns:
-        processed_data['LOS'] = (
-            processed_data['DISCHTIME'] - processed_data['ADMITTIME']
+    if 'los' not in processed_data.columns:
+        processed_data['los'] = (
+            processed_data['dischtime'] - processed_data['admittime']
         ).dt.total_seconds() / (24 * 60 * 60)
     
     # Define race mapping
@@ -220,14 +217,14 @@ def process_chf_data(data):
     }
     
     # Map race categories
-    processed_data['RACE'] = processed_data['ETHNICITY'].apply(
+    processed_data['race'] = processed_data['race'].apply(
         lambda x: next((v for k, v in race_mapping.items() if k in str(x).upper()), 'OTHER')
     )
     
     # Select relevant features
     features = [
-        'SUBJECT_ID', 'HADM_ID', 'ICUSTAY_ID', 'GENDER', 'AGE', 'RACE',
-        'HOSPITAL_EXPIRE_FLAG', 'FIRST_CAREUNIT', 'LOS',
+        'subject_id', 'hadm_id', 'icustay_id', 'gender', 'age', 'race',
+        'hospital_expire_flag', 'first_careunit', 'los',
         'bnp', 'creatinine', 'sodium', 'potassium'
     ]
     
@@ -249,7 +246,7 @@ def process_chf_data(data):
     final_data = final_data.dropna(subset=['creatinine', 'sodium', 'potassium'])
     
     # One-hot encode categorical variables
-    categorical_cols = ['GENDER', 'RACE', 'FIRST_CAREUNIT']
+    categorical_cols = ['gender', 'race', 'first_careunit']
     categorical_cols = [col for col in categorical_cols if col in final_data.columns]
     
     final_data_encoded = pd.get_dummies(
@@ -275,7 +272,7 @@ def process_chf_data(data):
         logging.info(final_data[col].value_counts(normalize=True))
     
     logging.info("\nMortality rate:")
-    logging.info(f"{final_data_encoded['HOSPITAL_EXPIRE_FLAG'].mean():.2%}")
+    logging.info(f"{final_data_encoded['hospital_expire_flag'].mean():.2%}")
     
     # Additional feature statistics
     logging.info("\nFeature set information:")
@@ -315,8 +312,8 @@ if __name__ == "__main__":
         
         # Print final statistics
         logging.info("\nFinal dataset statistics:")
-        logging.info(f"Total patients: {processed_data['SUBJECT_ID'].nunique()}")
-        logging.info(f"Total admissions: {processed_data['HADM_ID'].nunique()}")
+        logging.info(f"Total patients: {processed_data['subject_id'].nunique()}")
+        logging.info(f"Total admissions: {processed_data['hadm_id'].nunique()}")
         logging.info(f"Total features: {len(processed_data.columns)}")
         
     except Exception as e:
