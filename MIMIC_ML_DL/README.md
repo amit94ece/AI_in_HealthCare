@@ -1,8 +1,8 @@
-# AI in Healthcare: MIMIC-IV Data Analysis
+# AI in Healthcare: MIMIC-III Data Analysis
 
 ## Project Overview
 
-This project implements machine learning and deep learning models for analyzing MIMIC-IV healthcare data, with a specific focus on Congestive Heart Failure (CHF) prediction. The implementation includes data preprocessing, feature engineering, and neural network modeling using PyTorch.
+This project implements machine learning and deep learning models for analyzing MIMIC-II healthcare data, with a specific focus on Congestive Heart Failure (CHF) prediction. The implementation includes data preprocessing, feature engineering, and neural network modeling using PyTorch.
 
 ## Data Preprocessing
 
@@ -68,6 +68,7 @@ AI_in_HealthCare/
 ├── MIMIC_ML_DL/
 │ ├── data_preprocessing.py
 │ └── train_models.py
+│ └── train_neural.py
 ├── data/
 │ ├── hosp/
 │ └── icu/
@@ -75,8 +76,7 @@ AI_in_HealthCare/
 ```
 
 ## Usage
-
-Ensure MIMIC-IV data is in the correct directory structure
+Ensure MIMIC-III data is in the correct directory structure
 
 ## Environment Setup
 
