@@ -1,6 +1,6 @@
 # Healthcare Data Preprocessing Pipeline
 
-This project combines data preprocessing with advanced AI analysis using Amazon Bedrock's Claude model to provide comprehensive medication adherence insights and personalized healthcare recommendations. This might cost money depending on how many times the model is invoked. Pricing details for invoking Claude 3.7 via bedrock is in the given link (https://aws.amazon.com/bedrock/pricing/). For my example and running the sctipts shouldn't cost more than a few cents.
+This project combines data preprocessing with advanced AI analysis using Amazon Bedrock's Claude model to provide comprehensive medication adherence insights and personalized healthcare recommendations. This might cost money depending on how many times the model is invoked. Pricing details for invoking Claude 3.7 via bedrock is in the given link (https://aws.amazon.com/bedrock/pricing/). For this example and running the scripts shouldn't cost more than a few cents.
 
 ## Overview
 
@@ -24,17 +24,17 @@ cd <repository-name>
 
 # Create virtual environment
 ```bash
-python -m venv venv
+python -m venv llmvenv
 ```
 
 ## Activate virtual environment
 ### On Windows
 ```bash
-venv\Scripts\activate
+llmvenv\Scripts\activate
 ```
 ### On macOS/Linux
 ```bash
-source venv/bin/activate
+source llmvenv/bin/activate
 ```
 
 ### Install the requirements file:
@@ -89,6 +89,7 @@ arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude
 
 
 ## Project Structure
+```bash
 .
 ├── data_preprocessing.py
 ├── claude.py
@@ -100,7 +101,7 @@ arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude
 │   └── encounters.csv
 └── processed_data/
     └── adherence_features.csv
-
+```
 
 ## Usage
 
