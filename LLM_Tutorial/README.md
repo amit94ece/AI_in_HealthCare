@@ -1,4 +1,4 @@
-# Healthcare Data Preprocessing Pipeline
+# Healthcare LLM Analysis and Insights Engine
 
 This project combines data preprocessing with advanced AI analysis using Amazon Bedrock's Claude model to provide comprehensive medication adherence insights and personalized healthcare recommendations. This might cost money depending on how many times the model is invoked. Pricing details for invoking Claude 3.7 via bedrock is in the given link (https://aws.amazon.com/bedrock/pricing/). For this example and running the scripts shouldn't cost more than a few cents.
 
