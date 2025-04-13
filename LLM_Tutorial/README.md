@@ -13,6 +13,7 @@ The system consists of two main components:
 - Python 3.8 or higher
 - AWS Account (for AWS credentials setup)
 - Git
+- DataSource - (https://synthea.mitre.org/downloads). Download 100 Sample Synthetic Patient Records, CSV: 7 MB and move the required files to the project sturcture below.
 
 ## Project Setup
 
