@@ -74,13 +74,18 @@ Default output format (json) - Just press enter
 
 ### Export AWS Profile:
 #### On Linux/macOS
+```bash
 export AWS_PROFILE=healthcare-project
-
+```
 #### On Windows (Command Prompt)
+```bash
 set AWS_PROFILE=healthcare-project
+```
 
 #### On Windows (PowerShell)
+```bash
 $env:AWS_PROFILE="healthcare-project"
+```
 
 
 ### Enable Model Access in AWS Account
