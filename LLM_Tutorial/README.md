@@ -72,6 +72,17 @@ Default region - us-east-1
 
 Default output format (json) - Just press enter
 
+### Export AWS Profile:
+#### On Linux/macOS
+export AWS_PROFILE=healthcare-project
+
+#### On Windows (Command Prompt)
+set AWS_PROFILE=healthcare-project
+
+#### On Windows (PowerShell)
+$env:AWS_PROFILE="healthcare-project"
+
+
 ### Enable Model Access in AWS Account
 Refer link for details - https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html
 
