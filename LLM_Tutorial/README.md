@@ -7,6 +7,10 @@ This project combines data preprocessing with advanced AI analysis using Amazon 
 The system consists of two main components:
 1. Data Preprocessing Pipeline (data_preprocessing.py)
 2. AI-Powered Analysis Engine (claude.py)
+   1. Analyzing patient adherence data using structured reasoning approaches and in-context learning
+## Enhanced Functionality: Reasoning and In-Context Learning
+
+
 
 ## Prerequisites
 
@@ -203,6 +207,31 @@ The `claude.py` implementation utilizes four specific prompt engineering techniq
    - Particularly useful for complex cases with multiple contributing factors
    - Enables comprehensive analysis of interrelated adherence issues
 
+## Enhanced Functionality: Reasoning and In-Context Learning
+
+The system implements sophisticated analysis combining reasoning approaches with in-context learning through two key functions:
+
+### 1. Reasoning-Based Analysis
+- `create_reasoning_prompt`: Generates specialized prompts for different analysis types
+- `analyze_with_reasoning`: Performs enhanced analysis using structured reasoning
+- Supports both predictive analysis and risk classification
+- Incorporates example cases for improved context
+
+### 2. Analysis Types
+#### Predictive Analysis
+- Analyzes historical adherence patterns
+- Identifies key risk factors
+- Compares with similar patient profiles
+- Generates probability of adherence decline
+
+#### Risk Classification
+- Categorizes patients into risk levels (High/Medium/Low)
+- Considers multiple factors:
+  - Current adherence metrics
+  - Demographic risk factors
+  - Clinical complexity
+  - Social determinants
+
 These techniques are used individually or in combination depending on the complexity of the analysis required and the specific characteristics of each patient case. The selection of technique is based on factors such as:
 - Complexity of adherence patterns
 - Amount of available patient data
@@ -210,7 +239,6 @@ These techniques are used individually or in combination depending on the comple
 - Specificity of recommendations required
 
 Each technique contributes to a comprehensive understanding of medication adherence patterns and helps generate appropriate, patient-specific recommendations for improving medication adherence.
-
 
 ## Contributing
 
