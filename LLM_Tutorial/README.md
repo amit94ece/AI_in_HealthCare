@@ -207,24 +207,24 @@ The `claude.py` implementation utilizes four specific prompt engineering techniq
    - Particularly useful for complex cases with multiple contributing factors
    - Enables comprehensive analysis of interrelated adherence issues
 
-## Enhanced Functionality: Reasoning and In-Context Learning
+### Enhanced Functionality: Reasoning and In-Context Learning
 
 The system implements sophisticated analysis combining reasoning approaches with in-context learning through two key functions:
 
-### 1. Reasoning-Based Analysis
+#### 1. Reasoning-Based Analysis
 - `create_reasoning_prompt`: Generates specialized prompts for different analysis types
 - `analyze_with_reasoning`: Performs enhanced analysis using structured reasoning
 - Supports both predictive analysis and risk classification
 - Incorporates example cases for improved context
 
-### 2. Analysis Types
-#### Predictive Analysis
+#### 2. Analysis Types
+##### Predictive Analysis
 - Analyzes historical adherence patterns
 - Identifies key risk factors
 - Compares with similar patient profiles
 - Generates probability of adherence decline
 
-#### Risk Classification
+##### Risk Classification
 - Categorizes patients into risk levels (High/Medium/Low)
 - Considers multiple factors:
   - Current adherence metrics
