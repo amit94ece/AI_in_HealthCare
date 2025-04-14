@@ -56,7 +56,8 @@ def analyze_adherence_with_claude(patient_data, prompt_type="zero-shot", region=
     patient_str = format_patient_data(patient_data)
     
     prompts = {
-        "zero-shot": f"""Based on the following patient data, identify factors that might predict medication non-adherence and suggest potential interventions:
+        "zero-shot": f"""Based on the following patient data, 
+        identify factors that might predict medication non-adherence and suggest potential interventions:
 
 {patient_str}""",
         
@@ -72,7 +73,9 @@ Adherence Rate: 0.45
 Max Gap Between Refills: 35 days
 Average Gap Between Refills: 12 days
 Number of Medications: 3
-Analysis: This patient shows poor medication adherence likely due to complex medication regimen (multiple medications) and possible financial constraints. Recommended interventions include medication simplification, pill organizers, and financial assistance programs.
+Analysis: This patient shows poor medication adherence likely due to complex medication regimen (multiple medications) 
+and possible financial constraints. Recommended interventions include medication simplification, pill organizers, and 
+financial assistance programs.
 
 Example 2:
 Patient ID: SYN23456
@@ -84,7 +87,8 @@ Adherence Rate: 0.92
 Max Gap Between Refills: 8 days
 Average Gap Between Refills: 3 days
 Number of Medications: 1
-Analysis: This patient shows excellent medication adherence with minimal gaps between refills. Contributing factors likely include simple medication regimen and higher income allowing for consistent access.
+Analysis: This patient shows excellent medication adherence with minimal gaps between refills. 
+Contributing factors likely include simple medication regimen and higher income allowing for consistent access.
 
 Now analyze this new patient:
 {patient_str}""",

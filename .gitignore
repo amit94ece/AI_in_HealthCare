@@ -187,3 +187,5 @@ cython_debug/
 */*.xpt
 */*.pth
 */additional_data/*
+processed_data/
+synthea_data/
