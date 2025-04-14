@@ -51,7 +51,7 @@ def analyze_adherence_with_claude(patient_data, prompt_type="zero-shot", region=
     )
     
     # model_id = "anthropic.claude-3-7-sonnet-20250219-v1:0"
-    model_id = "arn:aws:bedrock:us-east-1:560429778408:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0"
+    model_id = "arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0"
     
     patient_str = format_patient_data(patient_data)
     
@@ -222,7 +222,7 @@ def analyze_with_reasoning(patient_data, reasoning_type="prediction", examples=N
     
     try:
         response = bedrock_runtime.invoke_model(
-            modelId="arn:aws:bedrock:us-east-1:560429778408:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+            modelId="arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0",
             body=json.dumps(request_body)
         )
         response_body = json.loads(response.get('body').read())
