@@ -174,7 +174,7 @@ encounters.csv: Patient encounters and conditions
 
 ### 2. AI Analysis Engine (claude.py)
 
-The Claude 3.7 module leverages Amazon Bedrock's Claude model for sophisticated healthcare analysis through advanced prompt engineering techniques:
+The Claude 3.7 module leverages Amazon Bedrock's Claude model for sophisticated healthcare analysis through advanced prompt engineering techniques and reasoning and in-context learning :
 
 
 ### Prompt Engineering Techniques
