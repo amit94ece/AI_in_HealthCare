@@ -59,40 +59,44 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/lung-histopathology-ai.git
+   git clone https://github.com/amit94ece/lung-histopathology-ai.git
    cd lung-histopathology-ai
 Install dependencies:
 
 bash
-Copy
-Edit
+```
 pip install -r requirements.txt
-Prepare the dataset:
+```
+
+## Prepare the dataset:
 
 Organize raw images into a data_raw/ folder by class.
 
 Run the dataset preparation script:
 
 bash
-Copy
-Edit
+```
 python prepare-dataset.py
-Train the CNN model:
+```
+
+## Train the CNN model:
 
 bash
-Copy
-Edit
+```
 python lung_cancer_classifier.py
-Start the Streamlit app:
+```
+
+## Start the Streamlit app:
 
 bash
-Copy
-Edit
+```
 streamlit run app.py
-🔐 Important Notes
+```
+
+## 🔐 Important Notes
 AWS Bedrock credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION) must be configured in .streamlit/secrets.toml.
 
-Claude models used:
+### Claude models used:
 
 Claude 3.7 Sonnet
 
@@ -100,7 +104,7 @@ Claude 3.5 Sonnet
 
 Bedrock region used: us-east-1
 
-📚 Requirements
+## 📚 Requirements
 Python 3.11+
 
 PyTorch >= 2.0.0
@@ -123,19 +127,21 @@ fpdf
 
 (Full list available in requirements.txt)
 
-📷 Screenshots
+## 📷 Screenshots
 
-CNN Prediction and GradCAM Visualization	LLM-Generated Clinical Commentary
-(Add screenshots after running your app!)
+CNN Prediction and GradCAM Visualization	
 
-📌 Acknowledgements
+LLM-Generated Clinical Commentary
+![alt text](image.png)
+
+## 📌 Acknowledgements
 Dataset: Lung and Colon Histopathological Image Dataset
 
 Model Backbone: TorchVision ResNet-18
 
 LLMs: Claude 3.7 Sonnet and Claude 3.5 Sonnet via AWS Bedrock
 
-✨ Future Work
+## ✨ Future Work
 Incorporate additional cancer types and tissue modalities.
 
 Integrate GPT-4o or specialized medical LLMs.
