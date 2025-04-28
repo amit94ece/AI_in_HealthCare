@@ -141,9 +141,9 @@ AWS_REGION = "<Your regions>"
 ```
 
 ### Claude models used:
-Claude 3.7 Sonnet
-Claude 3.5 Sonnet
-Bedrock region used: us-east-1
+- Claude 3.7 Sonnet
+- Claude 3.5 Sonnet
+- Bedrock region used: us-east-1
 
 ## 📷 Screenshots
 
