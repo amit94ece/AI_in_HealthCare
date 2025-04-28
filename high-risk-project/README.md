@@ -169,3 +169,12 @@ Integrate GPT-4o or specialized medical LLMs.
 Conduct real-world evaluation with pathologists.
 
 Enable clinician feedback loops into the system.
+
+## Contributing
+
+Feel free to fork this repository and submit pull requests with improvements or additional features.
+
+## License
+This project is open-source and available under the MIT License.
+
+
