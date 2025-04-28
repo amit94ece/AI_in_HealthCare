@@ -155,7 +155,7 @@ LLM-Generated Clinical Commentary
 ![alt text](img/llm.png)
 
 ## 📌 Acknowledgements
-Dataset: Lung and Colon Histopathological Image Dataset
+Dataset: [Lung and Colon Histopathological Image Dataset](https://github.com/tampapath/lung_colon_image_set) (by Tampapath)
 
 Model Backbone: TorchVision ResNet-18
 
