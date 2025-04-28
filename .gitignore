@@ -172,6 +172,7 @@ cython_debug/
 
 #Any Data Files
 /*/data/*
+/*/data_raw/*
 */*.csv
 */*.json
 */*.xlsx
@@ -186,6 +187,12 @@ cython_debug/
 */*.sas7bdat
 */*.xpt
 */*.pth
+
 */additional_data/*
 processed_data/
 synthea_data/
+data_raw
+*.jpeg
+
+.streamlit/
+*.pt
