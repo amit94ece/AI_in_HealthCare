@@ -108,8 +108,8 @@ Complete user creation and save the credentials securely
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/amit94ece/lung-histopathology-ai.git
-   cd lung-histopathology-ai
+   git clone https://github.com/amit94ece/AI_in_HealthCare.git
+   cd high-risk-project
 
 ## Prepare the dataset:
 
