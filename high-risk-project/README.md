@@ -69,17 +69,17 @@ arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude
 
 ## Create virtual environment
 ```bash
-python -m venv llmvenv
+python -m venv hrvenv
 ```
 
 ## Activate virtual environment
 ### On Windows
 ```bash
-llmvenv\Scripts\activate
+hrvenv\Scripts\activate
 ```
 ### On macOS/Linux
 ```bash
-source llmvenv/bin/activate
+source hrvenv/bin/activate
 ```
 
 ### Install the requirements file:
@@ -111,24 +111,18 @@ Complete user creation and save the credentials securely
 
 Organize raw images into a data_raw/ folder by class.
 
-Run the dataset preparation script:
-
-bash
-```
+## Run the dataset preparation script:
+```bash
 python prepare-dataset.py
 ```
 
 ## Train the CNN model:
-
-bash
-```
+```bash
 python lung_cancer_classifier.py
 ```
 
 ## Start the Streamlit app:
-
-bash
-```
+```bash
 streamlit run app.py
 ```
 
@@ -138,33 +132,8 @@ AWS Bedrock credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION) m
 ### Claude models used:
 
 Claude 3.7 Sonnet
-
 Claude 3.5 Sonnet
-
 Bedrock region used: us-east-1
-
-## 📚 Requirements
-Python 3.11+
-
-PyTorch >= 2.0.0
-
-Torchvision
-
-Streamlit
-
-boto3
-
-numpy
-
-matplotlib
-
-Pillow
-
-tqdm
-
-fpdf
-
-(Full list available in requirements.txt)
 
 ## 📷 Screenshots
 
