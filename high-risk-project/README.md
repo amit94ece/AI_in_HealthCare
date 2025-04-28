@@ -51,6 +51,54 @@
 - Training metrics (accuracy/loss) plotted and saved.
 
 ---
+## Pre-Requisites
+### Enable Model Access in AWS Account
+Refer link for details - https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html
+
+You need to enable access for Claude 3.7
+
+### Model Configuration
+
+#### Important Note About Model ID
+The model_id in the configuration must be updated with the corresponding Amazon Bedrock model inference ARN. This is crucial for successful model invocation.
+
+Example format:
+```bash
+arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0
+```
+
+## Create virtual environment
+```bash
+python -m venv llmvenv
+```
+
+## Activate virtual environment
+### On Windows
+```bash
+llmvenv\Scripts\activate
+```
+### On macOS/Linux
+```bash
+source llmvenv/bin/activate
+```
+
+### Install the requirements file:
+```bash
+pip install -r requirements.txt
+```
+
+### Create an AWS User
+Sign in to AWS Management Console
+
+Navigate to IAM (Identity and Access Management)
+
+Click "Users" → "Add user"
+
+Set username and enable "Access key - Programmatic access"
+
+Attach necessary permissions (e.g., AWSBedrock)
+
+Complete user creation and save the credentials securely
 
 ## 🛠️ Setup Instructions
 
@@ -58,12 +106,6 @@
    ```bash
    git clone https://github.com/amit94ece/lung-histopathology-ai.git
    cd lung-histopathology-ai
-Install dependencies:
-
-bash
-```
-pip install -r requirements.txt
-```
 
 ## Prepare the dataset:
 
