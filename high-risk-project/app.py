@@ -25,7 +25,7 @@ bedrock = session.client(service_name="bedrock-runtime")
 
 # === MODEL OPTIONS ===
 model_options = {
-    "Claude 3.7 Sonnet": "arn:aws:bedrock:us-east-1:560429778408:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0",
+    "Claude 3.7 Sonnet": "arn:aws:bedrock:us-east-1:<Your account Id>:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0",
     "Claude 3.5 Sonnet": "anthropic.claude-3-5-sonnet-20240620-v1:0",
 }
 

@@ -62,9 +62,13 @@ You need to enable access for Claude 3.7
 #### Important Note About Model ID
 The model_id in the configuration must be updated with the corresponding Amazon Bedrock model inference ARN. This is crucial for successful model invocation.
 
-Example format:
+Example format for 3.7:
 ```bash
 arn:aws:bedrock:us-east-1:<aws account id>:inference-profile/us.anthropic.claude-3-7-sonnet-20250219-v1:0
+```
+Example format for 3.5:
+```bash
+anthropic.claude-3-5-sonnet-20240620-v1:0
 ```
 
 ## Create virtual environment
@@ -129,8 +133,14 @@ streamlit run app.py
 ## 🔐 Important Notes
 AWS Bedrock credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION) must be configured in .streamlit/secrets.toml.
 
-### Claude models used:
+Example:
+```bash
+AWS_ACCESS_KEY_ID = "<Your Access Key>"
+AWS_SECRET_ACCESS_KEY = "<Your Secret Key>"
+AWS_REGION = "<Your regions>"
+```
 
+### Claude models used:
 Claude 3.7 Sonnet
 Claude 3.5 Sonnet
 Bedrock region used: us-east-1
