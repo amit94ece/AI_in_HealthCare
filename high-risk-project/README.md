@@ -148,11 +148,11 @@ Bedrock region used: us-east-1
 ## 📷 Screenshots
 
 CNN Prediction and GradCAM Visualization
-![alt text](cnn.png)
-![alt text](gradcam.png)
+![alt text](img/cnn.png)
+![alt text](img/gradcam.png)
 
 LLM-Generated Clinical Commentary
-![alt text](llm.png)
+![alt text](img/llm.png)
 
 ## 📌 Acknowledgements
 Dataset: Lung and Colon Histopathological Image Dataset
