@@ -12,12 +12,22 @@
 
 ## 🚀 Project Structure
 
-| File | Description |
-|:-----|:------------|
-| `prepare-dataset.py` | Splits raw histopathology image data into train and validation folders |
-| `lung_cancer_classifier.py` | Trains a ResNet-18 model on the lung cancer dataset and saves the best model |
-| `app.py` | Streamlit app for uploading images, viewing GradCAM heatmaps, and consulting Claude models |
-| `requirements.txt` | Python dependencies for training and app |
+
+## 🚀 Project Structure
+
+| File/Folder | Description |
+|:------------|:------------|
+| `.streamlit/` | Configuration folder for Streamlit secrets |
+| `data/data_raw/` | Raw images organized into `lung_aca`, `lung_n`, `lung_scc` classes |
+| `data/train/`, `data/val/` | Split training and validation datasets |
+| `app.py` | Streamlit app for upload, prediction, GradCAM and LLM commentary |
+| `prepare-dataset.py` | Script to split raw data into training and validation |
+| `lung_cancer_classifier.py` | Training script for ResNet-18 model |
+| `best_lung_cancer_classifier.pt` | Best performing model checkpoint |
+| `final_lung_cancer_classifier.pt` | Final model checkpoint |
+| `training_metrics.png` | Plot showing accuracy and loss during training |
+| `requirements.txt` | List of required Python packages |
+| `README.md` | Project overview and setup instructions |
 
 ---
 
