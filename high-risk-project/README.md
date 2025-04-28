@@ -12,9 +12,6 @@
 
 ## 🚀 Project Structure
 
-
-## 🚀 Project Structure
-
 | File/Folder | Description |
 |:------------|:------------|
 | `.streamlit/` | Configuration folder for Streamlit secrets |
@@ -129,10 +126,12 @@ fpdf
 
 ## 📷 Screenshots
 
-CNN Prediction and GradCAM Visualization	
+CNN Prediction and GradCAM Visualization
+![alt text](cnn.png)
+![alt text](gradcam.png)
 
 LLM-Generated Clinical Commentary
-![alt text](image.png)
+![alt text](llm.png)
 
 ## 📌 Acknowledgements
 Dataset: Lung and Colon Histopathological Image Dataset
